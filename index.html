@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - P1 - M08VEx</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_gnius_club')">
+        <div class="title">
+            <span>🌟 Actividad 1: Saludo Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Saludo y presentación de la actividad.</div>
+    </div>
+    <div id="saludo_gnius_club" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Bienvenida".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Hola, Genios! 🌟 ¿Están listos para una nueva aventura creativa? Hoy vamos a recortar, doblar y pegar para darle vida a nuestras propias computadoras. ¡Esta misión será épica!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo se sienten hoy?".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de empezar, quiero saber cómo se sienten. Si ya están emocionados por recortar y construir su computadora, levanten las dos manos. Si prefieren ir con calma, crucen los brazos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por asistir".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, juntemos nuestras manos y demos gracias por esta oportunidad de crear algo genial hoy. ¡Gracias por estar aquí listos para ser diseñadores de tecnología!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Actividad del Día".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Los objetivos de nuestra misión de hoy son: 1. Personalizar y armar una computadora en 3D siguiendo instrucciones de corte y pegado. 2. Expresar nuestra creatividad a través del diseño y los colores.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('ejercicio_risa')">
+        <div class="title">
+            <span>🏃‍♀️ Actividad 2: Caminata rápida (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicio de activación y preparación para el desafío.</div>
+    </div>
+    <div id="ejercicio_risa" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Caminata Rápida".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, antes de empezar a crear, necesitamos despertar nuestros cuerpos y mentes. Vamos a caminar rápido por el salón durante un minuto. ¡Recuerden moverse con energía y entusiasmo!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 7 "Temporizador de 1 Minuto".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 8 "Reflexión sobre el Ejercicio".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¿Sienten cómo la energía empieza a fluir? Esta caminata nos ayuda a activar nuestro cuerpo y estar más listos para la misión que sigue. ¡Ahora, con toda esa energía, vamos a crear algo espectacular!</div>
+        </div>
+    </div>
+</div> 
+
+<!-- Actividad 3 (6 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('crea_computadora')">
+        <div class="title">
+            <span>💻 Actividad 3: Dobla una Computadora (6 pasos)</span>
+            <span>⏰ Tiempo: 38.5 minutos</span>
+        </div>
+        <div class="subtitle">Creación de una computadora en 3D a través de Papercraft.</div>
+    </div>
+    <div id="crea_computadora" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 9 "Papercraft - Construye tu Computadora".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, hoy vamos a construir algo especial. Les voy a dar una hoja con un modelo de computadora que ustedes podrán recortar, colorear y ensamblar. ¡Dejen que su creatividad brille! ¿Qué accesorios podría tener su computadora? ¿Quizá unos parlantes geniales o luces de colores?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 10 "Instrucciones para el Papercraft".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Primero, recorten los contornos de la computadora siguiendo las líneas punteadas. Luego, ¡coloréenla y añadan accesorios! Después, doblen las solapas y, por último, usen pegamento para ensamblarla. ¡Vamos a ver qué maravillas crean!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (30 minutos): Proyectar Diapositiva 11 "Temporizador de 30 Minutos".</div>
+            <div class="section-title">Instrucciones</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (5 minutos): Proyectar Diapositiva 12 "Muestra tu Papercraft".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Muy bien, tiempo terminado! Ahora quiero ver algunas de sus creaciones. ¿Quién quiere mostrarnos cómo quedó su computadora? ¡Levanten la mano y compartan su obra maestra!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar Diapositiva 13 "Revisión de los Objetivos".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy completamos dos objetivos importantes: 1. Siguiendo las instrucciones, construimos una computadora en papel. 2. Expresamos nuestra creatividad personalizando cada detalle. ¡Gran trabajo, Genios!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar Diapositiva 14 "You've Got Mon-e".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Felicidades, Genios! Han creado computadoras increíbles y, por eso, ¡han ganado Mon-e! ¡Estoy muy orgulloso de su esfuerzo y creatividad!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (1 paso) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏆 Actividad 4: Honor The Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 0.5 minutos</span>
+        </div>
+        <div class="subtitle">Mantener el salón en orden.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 15 "Honor The Dojo".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, antes de despedirnos, vamos a recoger todo para dejar el salón tan limpio como lo encontramos. Pongan sus hojas y colores en orden y asegúrense de que nada quede fuera de lugar. ¡Gran trabajo hoy! Nos vemos en la próxima misión.</div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
